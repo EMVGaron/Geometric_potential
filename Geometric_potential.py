@@ -1,10 +1,8 @@
-#!/usr/bin/env python
+"""
+    Created on Jun 14, 2017
 
-'''
-Created on Jun 14, 2017
-
-@author: emarch
-'''
+    @author: emarch
+"""
 
 import numpy as np
 import itertools as iter
@@ -15,10 +13,12 @@ from Bio.PDB import PDBParser
 from Surface import Surface
 
 class GeometricPotential(object):
-    '''
-    Here is reproduced the geometric potential algorithm developed by Xie and Bourne, 2007.
-    DOI: doi.org/10.1186/1471-2105-8-S4-S9
-    '''
+    """
+        Here is reproduced the geometric potential algorithm developed by Xie and Bourne, 2007.
+        DOI: doi.org/10.1186/1471-2105-8-S4-S9
+
+        TODO: refactor the code to be standalone.
+    """
 
     def __init__(self):
         self.protein=None
@@ -32,30 +32,6 @@ class GeometricPotential(object):
         
     def set_protein(self,protein):
         self.protein=protein
-    
-    def get_protein(self):
-        return self.protein
-    
-    def get_alpha_carbons(self):
-        return self.calpha
-    
-    def get_delaunay_triangles(self):
-        return self.del_triangle_points
-    
-    def get_peeled_triangle_points(self):
-        return self.peeled_list_triangle_points
-    
-    def get_environmental_boundary(self):
-        return self.environmental_boundary
-    
-    def get_planes_from_tetrahedra(self):
-        return self.planes_from_tetrahedra
-    
-    def get_carbons_distances_directions(self):
-        return self.carbons_distances_directions
-    
-    def get_gp(self):
-        return self.gp
     
     def get_geometric_potential(self):
         self.select_alpha_carbons()
@@ -134,9 +110,9 @@ class GeometricPotential(object):
         return radius
         
     def triangle_area(self,a,b,c):
-        '''
-        Heron's formula to calculate the area by knowing the longitude of the edges of the triangle
-        '''
+        """
+            Heron's formula to calculate the area by knowing the longitude of the edges of the triangle
+        """
         s = (a + b + c) / 2.0
         return sqrt(s*(s-a)*(s-b)*(s-c))
     
